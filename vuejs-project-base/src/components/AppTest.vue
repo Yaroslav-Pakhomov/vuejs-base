@@ -18,6 +18,14 @@ export default {
       var2: 13,
 
       arr: [11, 12, 13],
+
+      obj: {a: 111, b: 112, c: 113},
+
+      objs_arr: [
+        {volume: 'Малый', price: 100},
+        {volume: 'Средний', price: 200},
+        {volume: 'Большой', price: 300},
+      ],
     }
   },
 
@@ -53,9 +61,52 @@ export default {
 
     <!-- Массивы во Vue. -->
     <p>
+      Массивы во Vue.
+      <br>
+
       <ul>
-        <li v-for="elem of arr">
+        {{ arr }}
+        <li v-for="elem in arr">
           {{ elem }}
+        </li>
+      </ul>
+
+    </p>
+
+    <!-- Объекты во Vue. -->
+    <p>
+      Объекты во Vue.
+      <br>
+
+      {{ obj }}
+      <br>
+
+      {{ obj.a }}
+      <br>
+
+      {{ obj['b'] }}
+      <br>
+
+      {{ obj.c }}
+
+      <ul>
+        <li v-for="elem in obj">
+          {{ elem }}
+        </li>
+      </ul>
+    </p>
+    <br>
+
+    <!-- Массив объектов во Vue. -->
+    <p>
+      Массив объектов во Vue
+      <br>
+      {{ objs_arr }}
+      <br>
+      <br>
+      <ul>
+        <li v-for="(prod, index) in objs_arr">
+          {{ index + 1 }}. Объём - {{ prod.volume }}, цена: {{ prod.price }} р.
         </li>
       </ul>
 
