@@ -3,10 +3,14 @@ export default {
   name: 'AppTest',
 
   // Переменные
-  data () {
+  data() {
     return {
       name: 'John',
       surname: 'Smith',
+      attr_src: './img/img1.jpg',
+      attr_alt: 'img',
+      a_text: 'Ссылка страницы',
+      a_href: 'page.html',
     }
   },
 
@@ -19,8 +23,19 @@ export default {
     <h2 class="green">
       Hello, World AppTest!
     </h2>
+    <!-- Переменные -->
     <p>{{ name }}</p>
     <p>{{ surname }}</p>
+
+    <!-- Директиву "v-bind:" для работы с атрибутами. Директиву "v-bind:" можно сократить до ":". -->
+    <p>
+      <img v-bind:src="attr_src" :alt="attr_alt">
+    </p>
+
+    <p>
+      <a :href="a_href">{{ a_text }}</a>
+    </p>
+
   </div>
 </template>
 
@@ -33,7 +48,14 @@ div.container {
 h2 {
   text-align: center;
 }
+
 p {
   text-align: center;
+}
+
+img {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
 }
 </style>
