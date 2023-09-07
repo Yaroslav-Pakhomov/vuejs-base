@@ -7,10 +7,15 @@ export default {
     return {
       name: 'John',
       surname: 'Smith',
+
       attr_src: './img/img1.jpg',
       attr_alt: 'img',
+
       a_text: 'Ссылка страницы',
       a_href: 'page.html',
+
+      var1: 12,
+      var2: 13,
     }
   },
 
@@ -23,6 +28,7 @@ export default {
     <h2 class="green">
       Hello, World AppTest!
     </h2>
+    
     <!-- Переменные -->
     <p>{{ name }}</p>
     <p>{{ surname }}</p>
@@ -34,6 +40,11 @@ export default {
 
     <p>
       <a :href="a_href">{{ a_text }}</a>
+    </p>
+
+    <!-- Выполнения кода в представлениях Vue. -->
+    <p>
+      {{ var1 + var2 }}
     </p>
 
   </div>
