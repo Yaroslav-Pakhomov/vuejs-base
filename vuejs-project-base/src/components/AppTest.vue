@@ -60,6 +60,16 @@ export default {
       this.text_par_mouseover_bool = !this.text_par_mouseover_bool;
       return this.text_par_mouseover = this.text_par_mouseover_bool ? 'Текст наведения по умолчанию.' : 'Текст наведения на параграфа изменение.';
     },
+
+    getArrSum() {
+      let summa = 0;
+
+      for (let elem of this.arr) {
+        summa += (+elem);
+      }
+
+      return summa;
+    },
   },
 
 }
@@ -191,6 +201,21 @@ export default {
     </div>
     <br>
     <br>
+
+    <!-- Работа с data внутри методов Vue. -->
+
+    <p>
+
+      Работа с data внутри методов Vue.
+      <br>
+      <br>
+
+      <span>Сумма элементов списка {{ arr }}: {{ getArrSum() }}</span>
+
+    </p>
+    <br>
+    <br>
+
 
   </div>
 </template>
