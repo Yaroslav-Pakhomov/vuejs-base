@@ -16,6 +16,8 @@ export default {
 
       var1: 12,
       var2: 13,
+
+      arr: [11, 12, 13],
     }
   },
 
@@ -28,7 +30,7 @@ export default {
     <h2 class="green">
       Hello, World AppTest!
     </h2>
-    
+
     <!-- Переменные -->
     <p>{{ name }}</p>
     <p>{{ surname }}</p>
@@ -45,6 +47,18 @@ export default {
     <!-- Выполнения кода в представлениях Vue. -->
     <p>
       {{ var1 + var2 }}
+    </p>
+
+    <br>
+
+    <!-- Массивы во Vue. -->
+    <p>
+      <ul>
+        <li v-for="elem of arr">
+          {{ elem }}
+        </li>
+      </ul>
+
     </p>
 
   </div>
@@ -68,5 +82,9 @@ img {
   width: 100%;
   margin: 5px;
   padding: 5px;
+}
+
+div ul li {
+  text-align: left;
 }
 </style>
