@@ -29,6 +29,22 @@ export default {
     }
   },
 
+  methods: {
+    // Через замыкание
+    showLink: function () {
+      return 'Текст ссылки: "' + this.a_text + '", адрес ссылки: "' + this.a_href + '".';
+    },
+
+    // Через объявление
+    showImg() {
+      return 'Текст описания: "' + this.attr_alt + '", адрес изображения: "' + this.attr_src + '".';
+    },
+
+    currentDate() {
+      let date = new Date();
+      return (date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate());
+    },
+  },
 
 }
 </script>
@@ -99,6 +115,7 @@ export default {
 
     <!-- Массив объектов во Vue. -->
     <p>
+
       Массив объектов во Vue
       <br>
       {{ objs_arr }}
@@ -110,6 +127,26 @@ export default {
         </li>
       </ul>
 
+    </p>
+    <br>
+    <br>
+
+    <!-- Работа с методами во Vue. -->
+
+    <p>
+      Работа с методами во Vue.
+      <br>
+      <br>
+
+      {{ showLink() }}
+      <br>
+      <br>
+
+      {{ showImg() }}
+      <br>
+      <br>
+
+      {{ currentDate() }}
     </p>
 
   </div>
