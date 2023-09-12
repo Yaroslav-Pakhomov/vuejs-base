@@ -110,8 +110,17 @@ export default {
       date = date >= 10 ? date : '0' + date;
 
       return selectDay + ' - ' + date + '.' + month + '.' + year;
-    }
+    },
+
+    // Передача параметром объекта события
+    setTextBtn(event) {
+      console.log(event);
+      console.log(event.target);
+      console.log('Содержание внутри тега: "' + event.target.innerHTML + '"');
+      console.log('Значение переданное тегом: "' + event.target.value + '"');
+    },
   },
+
 
 }
 
@@ -271,6 +280,22 @@ export default {
       {{ getFullDate() }}
       <br>
       {{ getFullDate(10) }}
+
+    </p>
+    <br>
+    <br>
+
+    <!-- Передача параметров в метод во Vue. -->
+
+    <p>
+
+      Передача параметров в метод во Vue.
+      <br>
+      <br>
+
+      <button @click="setTextBtn($event)" value="10">Кнопка 1</button>
+      <br>
+      <button @click="setTextBtn($event)" value="20">Кнопка 2</button>
 
     </p>
     <br>
