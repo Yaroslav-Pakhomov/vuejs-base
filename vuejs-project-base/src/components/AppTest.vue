@@ -32,6 +32,8 @@ export default {
 
       text_par_mouseover_bool: true,
       text_par_mouseover: 'Текст наведения по умолчанию.',
+
+      text_method: 'текст для метода',
     }
   },
 
@@ -46,21 +48,25 @@ export default {
       return 'Текст описания: "' + this.attr_alt + '", адрес изображения: "' + this.attr_src + '".';
     },
 
+    // Текущая дата
     currentDate() {
       let date = new Date();
       return (date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate());
     },
 
+    // Текст параграфа при клике
     setTextPar() {
       this.text_par_bool = !this.text_par_bool;
       return this.text_par = this.text_par_bool ? 'Текст по умолчанию.' : 'Текст параграфа изменение.';
     },
 
+    // Текст параграфа при наведении
     setTextParMouseover() {
       this.text_par_mouseover_bool = !this.text_par_mouseover_bool;
       return this.text_par_mouseover = this.text_par_mouseover_bool ? 'Текст наведения по умолчанию.' : 'Текст наведения на параграфа изменение.';
     },
 
+    // Сумма эл-тов массива
     getArrSum() {
       let summa = 0;
 
@@ -70,9 +76,45 @@ export default {
 
       return summa;
     },
+
+    // Метод и вспомогательный метод
+    showTextPar() {
+      return this.capitalLetter(this.text_method);
+    },
+    // Метод делает заглавной первую букву переданной строки
+    capitalLetter(str) {
+      return str[0].toUpperCase() + str.slice(1);
+    },
+
+    getFullDate(date = 0, month = 0, year = 0) {
+      // текущая дата
+      let nowDate = new Date();
+
+      date = date ? date : nowDate.getDate();
+      month = (month - 1) >= 0 ? (month - 1) : nowDate.getMonth();
+      year = year ? year : nowDate.getFullYear();
+
+      return 'День недели выбранной даты: ' + this.getWeekDay(date, month, year);
+    },
+
+    // Вспомогательный метод принимает дату в виде строки, возвращает день недели
+    getWeekDay(date, month, year) {
+      let selectDate = '';
+      let week = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб',];
+
+      selectDate = new Date(year, month, date);
+      let selectDay = week[selectDate.getDay()];
+
+      month++;
+      month = month >= 10 ? month : '0' + month;
+      date = date >= 10 ? date : '0' + date;
+
+      return selectDay + ' - ' + date + '.' + month + '.' + year;
+    }
   },
 
 }
+
 </script>
 
 <template>
@@ -211,6 +253,24 @@ export default {
       <br>
 
       <span>Сумма элементов списка {{ arr }}: {{ getArrSum() }}</span>
+
+    </p>
+    <br>
+    <br>
+
+    <!-- Вспомогательные методы во Vue. -->
+
+    <p>
+
+      Вспомогательные методы во Vue.
+      <br>
+      <br>
+
+      {{ showTextPar() }}
+      <br>
+      {{ getFullDate() }}
+      <br>
+      {{ getFullDate(10) }}
 
     </p>
     <br>
