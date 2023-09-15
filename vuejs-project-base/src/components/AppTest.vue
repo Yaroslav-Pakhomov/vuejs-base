@@ -33,7 +33,9 @@ export default {
       text_par_mouseover_bool: true,
       text_par_mouseover: 'Текст наведения по умолчанию.',
 
-      text_method: 'текст для метода',
+      text_method: 'Текст для метода',
+
+      text_react: 'Текст для реактивности',
     }
   },
 
@@ -118,6 +120,11 @@ export default {
       console.log(event.target);
       console.log('Содержание внутри тега: "' + event.target.innerHTML + '"');
       console.log('Значение переданное тегом: "' + event.target.value + '"');
+    },
+
+    // Реактивность данных
+    setReactivityProp() {
+      this.text_react = 'Изменённый реактивный текст.';
     },
   },
 
@@ -296,6 +303,24 @@ export default {
       <button @click="setTextBtn($event)" value="10">Кнопка 1</button>
       <br>
       <button @click="setTextBtn($event)" value="20">Кнопка 2</button>
+
+    </p>
+    <br>
+    <br>
+
+    <!-- Реактивность во Vue. -->
+
+    <p>
+
+      Реактивность во Vue.
+      <br>
+      <br>
+
+      {{ text_react }}
+      <br>
+
+      <button @click="setReactivityProp()" value="10">Реактивность</button>
+      <br>
 
     </p>
     <br>
