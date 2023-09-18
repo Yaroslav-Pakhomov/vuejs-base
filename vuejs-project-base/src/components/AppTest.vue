@@ -36,9 +36,15 @@ export default {
       text_method: 'Текст для метода',
 
       text_react: 'Текст для реактивности',
+
+      // Вычисляемые свойства
+      cost: 1100,
+      amount: 3,
+
     }
   },
 
+  // Методы
   methods: {
     // Через замыкание
     showLink: function () {
@@ -126,8 +132,25 @@ export default {
     setReactivityProp() {
       this.text_react = 'Изменённый реактивный текст.';
     },
+
+    // Вычисляемые свойства
+    increaseCost() {
+      this.cost += 100;
+    },
+    decreaseCost() {
+      this.cost -= 100;
+    },
   },
 
+  // Вычисляемые свойства во Vue
+  computed: {
+    full_name() {
+      return this.name + ' ' + this.surname;
+    },
+    price() {
+      return this.cost * this.amount;
+    },
+  },
 
 }
 
@@ -320,6 +343,33 @@ export default {
       <br>
 
       <button @click="setReactivityProp()" value="10">Реактивность</button>
+      <br>
+
+    </p>
+    <br>
+    <br>
+
+    <!-- Вычисляемые свойства во Vue. -->
+
+    <p>
+
+      Вычисляемые свойства во Vue.
+      <br>
+      <br>
+
+      ФИО
+      <p>{{ name }}</p>
+      <p>{{ surname }}</p>
+      <p>{{ full_name }}</p>
+      <br>
+
+      Корзина
+      <p>Цена: {{ cost }}</p>
+      <p>Кол-во: {{ amount }}</p>
+      <p>Стоимость: {{ price }}</p>
+      <button type="submit" @click="increaseCost()">Увеличить цену(+100)</button>
+      <button type="submit" @click="decreaseCost()">Уменьшить цену(-100)</button>
+
       <br>
 
     </p>
