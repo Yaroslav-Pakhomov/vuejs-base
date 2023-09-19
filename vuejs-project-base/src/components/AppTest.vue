@@ -376,6 +376,26 @@ export default {
     <br>
     <br>
 
+    <!-- Модификаторы событий во Vue. -->
+
+    <p>
+
+      Модификаторы событий во Vue.
+      <br>
+      <br>
+
+
+      <a href="https://ya.ru" target="_blank" @click.prevent>Яндекс</a>
+      <br>
+      <button type="submit" @click.once="increaseCost()">Увеличить цену(+100) один раз</button>
+      <button type="submit" @click.once="decreaseCost()">Уменьшить цену(-100) один раз</button>
+
+      <br>
+
+    </p>
+    <br>
+    <br>
+
 
   </div>
 </template>
