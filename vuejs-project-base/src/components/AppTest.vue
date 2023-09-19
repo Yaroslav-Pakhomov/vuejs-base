@@ -41,6 +41,10 @@ export default {
       cost: 1100,
       amount: 3,
 
+      // Показ по условию
+      visible: true,
+      invisible: false,
+
     }
   },
 
@@ -395,6 +399,22 @@ export default {
     </p>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>Условия</h2>
+
+    <p>
+
+      <!--Показ по условию-->
+      <p v-if="visible">Показ текста visible</p>
+      <!--Инвертирование-->
+      <p v-if="!invisible">Показ текста invisible</p>
+
+    </p>
+
+
 
 
   </div>
