@@ -44,6 +44,7 @@ export default {
       // Показ по условию
       visible: true,
       invisible: false,
+      visible_react: true,
 
     }
   },
@@ -144,6 +145,17 @@ export default {
     decreaseCost() {
       this.cost -= 100;
     },
+
+    // Условия. Реактивное условие
+    showHideText() {
+      // тогглинг(переключатель) элементов
+      this.visible = !this.visible;
+    },
+    showHideTextReact() {
+      // тогглинг(переключатель) элементов
+      this.visible_react = !this.visible_react;
+    },
+
   },
 
   // Вычисляемые свойства во Vue
@@ -154,6 +166,8 @@ export default {
     price() {
       return this.cost * this.amount;
     },
+
+
   },
 
 }
@@ -411,6 +425,16 @@ export default {
       <p v-if="visible">Показ текста visible</p>
       <!--Инвертирование-->
       <p v-if="!invisible">Показ текста invisible</p>
+
+      <button type="submit" @click="showHideText()">Показать\Скрыть текст</button>
+      <br>
+
+
+      <!--Реактивное условие-->
+      <button type="submit" @click="showHideTextReact()"  v-if="visible_react">Скрыть текст</button>
+      <button type="submit" @click="showHideTextReact()"  v-if="!visible_react">Показать текст</button>
+      <!--<button type="submit" @click="showHideTextReact()"  v-else>Показать текст</button>-->
+      <p v-if="visible_react">Visible</p>
 
     </p>
 
