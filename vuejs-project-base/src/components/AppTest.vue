@@ -48,7 +48,8 @@ export default {
       visible_toggle: true,
       visible_toggle1: true,
 
-      isAuth: false,
+      isAuth: true,
+      isPar: true,
 
       num: 2,
 
@@ -171,6 +172,9 @@ export default {
       // тогглинг(переключатель) элементов
       this.visible_toggle1 = !this.visible_toggle1;
     },
+    toggleIsPar() {
+      this.isPar = !this.isPar;
+    }
 
   },
 
@@ -520,6 +524,27 @@ export default {
 
       <br>
       <br>
+
+      <!--Условные группы во Vue-->
+
+      <p>Условные группы</p>
+      <p>
+        <button type="submit" @click="toggleIsPar">Показать/Скрыть параграфы</button>
+      </p>
+      <!--div попадает в итоговую вёрстку-->
+      <div v-if="isPar">
+        <p>+++</p>
+        <p>+++</p>
+        <p>+++</p>
+      </div>
+      <br>
+      <br>
+      <!--template не попадает в итоговую вёрстку-->
+      <template v-if="isPar">
+        <p>+++</p>
+        <p>+++</p>
+        <p>+++</p>
+      </template>
 
 
     </div>
