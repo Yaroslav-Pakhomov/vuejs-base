@@ -48,6 +48,12 @@ export default {
       visible_toggle: true,
       visible_toggle1: true,
 
+      isAuth: false,
+
+      num: 2,
+
+      age: 25,
+
     }
   },
 
@@ -432,8 +438,10 @@ export default {
     <div>
 
       <!--Показ по условию-->
+      <p>Показ по условию</p>
       <p v-if="visible">Показ текста visible</p>
       <!--Инвертирование-->
+      <p>Инвертирование</p>
       <p v-if="!invisible">Показ текста invisible</p>
 
       <p>
@@ -444,9 +452,10 @@ export default {
 
 
       <!--Реактивное условие, тогглинг(переключатель) элементов-->
+      <p>Реактивное условие, тогглинг(переключатель) элементов</p>
       <p>
-        <button type="submit" @click="showHideTextReact()"  v-if="visible_react">Скрыть текст</button>
-        <button type="submit" @click="showHideTextReact()"  v-if="!visible_react">Показать текст</button>
+        <button type="submit" @click="showHideTextReact()" v-if="visible_react">Скрыть текст</button>
+        <button type="submit" @click="showHideTextReact()" v-if="!visible_react">Показать текст</button>
         <!--<button type="submit" @click="showHideTextReact()"  v-else>Показать текст</button>-->
       </p>
       <p v-if="visible_react">Visible</p>
@@ -454,6 +463,7 @@ export default {
       <br>
 
       <!--Смена текста при тогглинге(переключении) во Vue-->
+      <p>Смена текста при тогглинге(переключении)</p>
       <p>
         <button type="submit" @click="showHideTextToggle()">Переключить параграф</button>
       </p>
@@ -467,11 +477,54 @@ export default {
       <p>
         {{ visible_toggle1 ? 'Видимый' : 'Невидимый' }} параграф 2
       </p>
+      <br>
+      <br>
+
+      <!--Директива v-else во Vue-->
+
+      <p>Директива v-else</p>
+      <p v-if="isAuth">Auth</p>
+      <p v-else>Not Auth</p>
+      <br>
+      <br>
+
+      <!--Сложные условия во Vue-->
+
+      <p>Сложные условия</p>
+      <p v-if="num === 1 || num === 2">
+        Переменная num равна одному или двум
+      </p>
+
+      <br>
+      <br>
+
+      <!--директива v-else-if во Vue-->
+
+      <p>Директива v-else-if</p>
+      <p v-if="num === 1">
+        Переменная num равна одному
+      </p>
+      <p v-else-if="num === 2">
+        Переменная num равна двум
+      </p>
+      <p v-else>
+        Переменная num равна трём
+      </p>
+
+      <br>
+      <br>
+
+      <p v-if="age < 18">Подросток </p>
+      <p v-else-if="18 <= age && age <= 25">Молодой человек</p>
+      <p v-else>Мужчина</p>
+
+      <br>
+      <br>
 
 
     </div>
-
-
+    <br>
+    <br>
 
 
   </div>
