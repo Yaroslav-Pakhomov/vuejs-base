@@ -45,6 +45,8 @@ export default {
       visible: true,
       invisible: false,
       visible_react: true,
+      visible_toggle: true,
+      visible_toggle1: true,
 
     }
   },
@@ -154,6 +156,14 @@ export default {
     showHideTextReact() {
       // тогглинг(переключатель) элементов
       this.visible_react = !this.visible_react;
+    },
+    showHideTextToggle() {
+      // тогглинг(переключатель) элементов
+      this.visible_toggle = !this.visible_toggle;
+    },
+    showHideTextToggle1() {
+      // тогглинг(переключатель) элементов
+      this.visible_toggle1 = !this.visible_toggle1;
     },
 
   },
@@ -419,24 +429,47 @@ export default {
 
     <h2>Условия</h2>
 
-    <p>
+    <div>
 
       <!--Показ по условию-->
       <p v-if="visible">Показ текста visible</p>
       <!--Инвертирование-->
       <p v-if="!invisible">Показ текста invisible</p>
 
-      <button type="submit" @click="showHideText()">Показать\Скрыть текст</button>
+      <p>
+        <button type="submit" @click="showHideText()">Показать\Скрыть текст</button>
+      </p>
+      <br>
       <br>
 
 
-      <!--Реактивное условие-->
-      <button type="submit" @click="showHideTextReact()"  v-if="visible_react">Скрыть текст</button>
-      <button type="submit" @click="showHideTextReact()"  v-if="!visible_react">Показать текст</button>
-      <!--<button type="submit" @click="showHideTextReact()"  v-else>Показать текст</button>-->
+      <!--Реактивное условие, тогглинг(переключатель) элементов-->
+      <p>
+        <button type="submit" @click="showHideTextReact()"  v-if="visible_react">Скрыть текст</button>
+        <button type="submit" @click="showHideTextReact()"  v-if="!visible_react">Показать текст</button>
+        <!--<button type="submit" @click="showHideTextReact()"  v-else>Показать текст</button>-->
+      </p>
       <p v-if="visible_react">Visible</p>
+      <br>
+      <br>
 
-    </p>
+      <!--Смена текста при тогглинге(переключении) во Vue-->
+      <p>
+        <button type="submit" @click="showHideTextToggle()">Переключить параграф</button>
+      </p>
+      <p>
+        {{ visible_toggle ? 'Видимый' : 'Невидимый' }} параграф 1
+      </p>
+      <br>
+      <p>
+        <button type="submit" @click="showHideTextToggle1()">Переключить параграф</button>
+      </p>
+      <p>
+        {{ visible_toggle1 ? 'Видимый' : 'Невидимый' }} параграф 2
+      </p>
+
+
+    </div>
 
 
 
