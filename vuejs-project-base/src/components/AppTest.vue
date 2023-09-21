@@ -617,6 +617,41 @@ export default {
         <li v-for="(user, name, index) in users">{{ name }} - {{ user }} - {{ index + 1 }}</li>
       </ul>
 
+      <br>
+      <br>
+
+      <!--Перебор группы тегов во Vue-->
+
+      <p>Перебор группы тегов</p>
+
+      <div v-for="(elem, key) in items">
+        <hr>
+        <p>
+          Ключ - {{ key }}, элемент - {{ elem }}
+        </p>
+        <hr>
+        <br>
+      </div>
+      <br>
+
+      <!--Объединение тегов без родителя-->
+      <template v-for="(elem, key) in items">
+        <hr>
+        <p>
+          Ключ - {{ key }}, элемент - {{ elem }}
+        </p>
+        <hr>
+        <br>
+      </template>
+
+      <ul>
+        <!--Объединение тегов без родителя-->
+        <template v-for="(elem, key) in items">
+          <li>{{ elem }}</li>
+          <li class="divider">divider</li>
+        </template>
+      </ul>
+
 
     </div>
 
