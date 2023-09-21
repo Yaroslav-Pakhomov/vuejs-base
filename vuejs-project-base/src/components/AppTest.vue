@@ -584,6 +584,17 @@ export default {
         <li v-for="elem in items">{{ elem }}</li>
       </ul>
 
+      <br>
+      <br>
+
+      <!--Получение ключей при переборе массивов во Vue-->
+
+      <p>Получение ключей при переборе массивов</p>
+      <ul>
+        <li v-for="(elem, key) in items">{{ key + 1 }}. {{ elem }}</li>
+      </ul>
+
+
     </div>
 
 
