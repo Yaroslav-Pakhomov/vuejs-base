@@ -55,6 +55,9 @@ export default {
 
       age: 25,
 
+      // Циклы
+      items: ['a', 'b', 'c'],
+
     }
   },
 
@@ -563,6 +566,25 @@ export default {
     </div>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>Циклы</h2>
+
+    <div>
+
+      <!--Перебор массивов во Vue-->
+
+      <p>Перебор массивов</p>
+
+      <p v-for="elem in items">{{ elem }}</p>
+      <div v-for="elem in items">{{ elem }}</div>
+      <ul>
+        <li v-for="elem in items">{{ elem }}</li>
+      </ul>
+
+    </div>
 
 
   </div>
