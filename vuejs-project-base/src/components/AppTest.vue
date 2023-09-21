@@ -57,6 +57,12 @@ export default {
 
       // Циклы
       items: ['a', 'b', 'c'],
+      obj_items: {a: 1, b: 2, c: 3},
+      users: {
+        user1: '100$',
+        user2: '200$',
+        user3: '300$',
+      },
 
     }
   },
@@ -592,6 +598,23 @@ export default {
       <p>Получение ключей при переборе массивов</p>
       <ul>
         <li v-for="(elem, key) in items">{{ key + 1 }}. {{ elem }}</li>
+      </ul>
+
+      <br>
+      <br>
+
+      <!--Перебор объектов во Vue-->
+
+      <p>Перебор объектов</p>
+      <ul>
+        <li v-for="(elem, key, index) in obj_items">{{ index + 1 }}. Ключ - {{ key }}, элемент - {{ elem }}</li>
+      </ul>
+
+      <br>
+      <br>
+
+      <ul>
+        <li v-for="(user, name, index) in users">{{ name }} - {{ user }} - {{ index + 1 }}</li>
       </ul>
 
 
