@@ -209,8 +209,35 @@ export default {
     },
 
     // Реактивность массивов
+    // Добавить элемент
     addItemToArr() {
       this.items.push('XXX');
+    },
+    // Удалить 1-ый элемент - arr.splice(0, 1);
+    deleteFirstItemInArr() {
+      this.items.splice(0, 1);
+    },
+    // Удалить 2-ой элемент - arr.splice(1, 1);
+    deleteSecondItemInArr() {
+      this.items.splice(1, 1);
+    },
+    // Удалить последний элемент - arr.splice(arr[arr.length - 1], 1);
+    deleteLastItemInArr() {
+      let length_arr = +this.items.length;
+      this.items.splice(length_arr - 1, 1);
+    },
+    // Удалить предпоследний элемент - arr.splice(arr[arr.length - 2], 1);
+    deletePenultimateItemInArr() {
+      let length_arr = +this.items.length;
+      this.items.splice(length_arr - 2, 1);
+    },
+    // Изменить порядок элементов в arr на обратный - arr.reverse();
+    reverseOrderItemInArr() {
+      this.items.reverse();
+    },
+    // Сортировка arr в алфавитном порядке - arr.sort( (a, b) => a.localeCompare(b) );
+    sortAlphabetOrderItemInArr() {
+      this.items.sort((a, b) => a.localeCompare(b));
     },
 
   },
@@ -758,15 +785,30 @@ export default {
       <p>Реактивность массивов</p>
 
       <p>
-        <button @click.prevent="addItemToArr()" >Добавить элемент</button>
+        <button @click.prevent="addItemToArr()">Добавить элемент</button>
+      </p>
+      <p>
+        <button @click.prevent="deleteFirstItemInArr()">Удалить 1-ый элемент</button>
+      </p>
+      <p>
+        <button @click.prevent="deleteSecondItemInArr()">Удалить 2-ой элемент</button>
+      </p>
+      <p>
+        <button @click.prevent="deletePenultimateItemInArr()">Удалить предпоследний элемент</button>
+      </p>
+      <p>
+        <button @click.prevent="deleteLastItemInArr()">Удалить последний элемент</button>
+      </p>
+      <p>
+        <button @click.prevent="reverseOrderItemInArr()">Реверс сортировка</button>
+      </p>
+      <p>
+        <button @click.prevent="sortAlphabetOrderItemInArr()">Алфавитная сортировка</button>
       </p>
 
       <p v-for="item in items">
         {{ item }}
       </p>
-
-
-      <!--items-->
 
 
       <br>
