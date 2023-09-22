@@ -80,6 +80,13 @@ export default {
       // Условия в циклах
       arr_items: [1, -2, 3, -4, 5],
 
+      // Атрибут key
+      ids_users: [
+        {id: 1, name: 'name1', surname: 'surname1',},
+        {id: 2, name: 'name2', surname: 'surname2',},
+        {id: 3, name: 'name3', surname: 'surname3',},
+      ]
+
     }
   },
 
@@ -724,6 +731,20 @@ export default {
       <template v-for="item in arr_items">
         <p v-if="item >= 0">{{ item }}</p>
       </template>
+
+      <br>
+      <br>
+
+      <!--Атрибут key во Vue-->
+
+      <p>Атрибут key</p>
+      <!--key - уникальный атрибут, который определяет идентичность каждого элемента, т.о. позволяя переиспользовать и упорядочивать существующие элементы.
+      Рекомендуется всегда указывать атрибут key с v-for, кроме случаев когда итерируемое содержимое DOM простое, или когда сознательно полагаетесь на стратегию обновления по умолчанию для улучшения производительности.-->
+      <br>
+      <p v-for="user in ids_users" :key="user.id">
+        Имя: {{ user.name }}, Фамилия: {{ user.surname }}
+      </p>
+
 
       <br>
       <br>
