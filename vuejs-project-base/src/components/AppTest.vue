@@ -206,7 +206,12 @@ export default {
     },
     toggleIsPar() {
       this.isPar = !this.isPar;
-    }
+    },
+
+    // Реактивность массивов
+    addItemToArr() {
+      this.items.push('XXX');
+    },
 
   },
 
@@ -744,6 +749,24 @@ export default {
       <p v-for="user in ids_users" :key="user.id">
         Имя: {{ user.name }}, Фамилия: {{ user.surname }}
       </p>
+
+      <br>
+      <br>
+
+      <!--Реактивность массивов во Vue-->
+
+      <p>Реактивность массивов</p>
+
+      <p>
+        <button @click.prevent="addItemToArr()" >Добавить элемент</button>
+      </p>
+
+      <p v-for="item in items">
+        {{ item }}
+      </p>
+
+
+      <!--items-->
 
 
       <br>
