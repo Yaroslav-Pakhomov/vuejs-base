@@ -58,11 +58,9 @@ export default {
       // Циклы
       items: ['a', 'b', 'c'],
       obj_items: {a: 1, b: 2, c: 3},
-      users: {
-        user1: '100$',
-        user2: '200$',
-        user3: '300$',
-      },
+      users: {user1: '100$', user2: '200$', user3: '300$',},
+
+      // Перебор массива объектов
       users_objs: [
         {name: 'name1', surname: 'surname1',},
         {name: 'name2', surname: 'surname2',},
@@ -78,6 +76,9 @@ export default {
         {name: 'product2', price: 200, quantity: 4},
         {name: 'product3', price: 300, quantity: 3},
       ],
+
+      // Условия в циклах
+      arr_items: [1, -2, 3, -4, 5],
 
     }
   },
@@ -703,6 +704,26 @@ export default {
       <p v-for="iter in 10">
         Номер итерации в диапазоне цикла: {{ iter }}
       </p>
+
+      <br>
+      <br>
+
+      <!--Условия в циклах во Vue-->
+
+      <p>Условия в циклах</p>
+      <br>
+
+      <ul>
+        <template v-for="item in arr">
+          <li v-if="item < 13">{{ item }}</li>
+        </template>
+      </ul>
+
+      <br>
+
+      <template v-for="item in arr_items">
+        <p v-if="item >= 0">{{ item }}</p>
+      </template>
 
       <br>
       <br>
