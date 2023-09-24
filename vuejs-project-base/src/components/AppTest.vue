@@ -257,6 +257,12 @@ export default {
     // Переключение выбора параграфа
     toggleObjSelected() {
       this.objCustomCssClasses.selected = !this.objCustomCssClasses.selected;
+    },
+
+    // Реактивность объекта с CSS классами
+    // Переключение выполнения
+    toggleObjDone() {
+      this.objCustomCssClasses.done = !this.objCustomCssClasses.done;
     }
   },
 
@@ -881,6 +887,18 @@ export default {
       </p>
       <p :class="objCustomCssClasses">Текст с пользовательским объектом стилей</p>
 
+      <br>
+      <br>
+
+      <!--Реактивность объекта с CSS классами во Vue-->
+
+      <p>Реактивность объекта с CSS классами</p>
+
+      <p>
+        <button @click="toggleObjDone">Переключить выполнение параграфа</button>
+      </p>
+      <p :class="objCustomCssClasses">Реактивность объекта с CSS классами</p>
+
 
     </div>
 
@@ -931,5 +949,6 @@ div ul li {
 
 .done {
   text-decoration: line-through;
+//display: none;
 }
 </style>
