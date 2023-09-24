@@ -899,6 +899,20 @@ export default {
       </p>
       <p :class="objCustomCssClasses">Реактивность объекта с CSS классами</p>
 
+      <br>
+      <br>
+
+      <!--Ин лайн объект с CSS классами во Vue-->
+
+      <p>Ин лайн объект с CSS классами</p>
+
+      <p :class="{active: true, 'selected': true, 'has-error': false}">
+        Ин лайн параграф.
+      </p>
+      <p :class="{active: false, 'valid': true}">
+        Ин лайн параграф.
+      </p>
+
 
     </div>
 
@@ -936,6 +950,7 @@ div ul li {
 
 .bg_green {
   background: hsla(160, 100%, 37%, 1);
+  transition: 2.4s;
 }
 
 .active {
