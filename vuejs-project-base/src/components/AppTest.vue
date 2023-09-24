@@ -816,6 +816,25 @@ export default {
 
 
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>Стили</h2>
+
+    <div>
+
+      <!--Стилизация компонента во Vue-->
+
+      <p>Стилизация компонента</p>
+
+      <p class="red">Красный цвет</p>
+      <p class="green">Зелёный цвет</p>
+
+
+    </div>
 
 
   </div>
@@ -843,5 +862,9 @@ img {
 
 div ul li {
   text-align: left;
+}
+
+.red {
+  color: #f00;
 }
 </style>
