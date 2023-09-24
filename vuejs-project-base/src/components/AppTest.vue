@@ -91,6 +91,15 @@ export default {
       str_class: 'active valid',
       cssClasses: 'red bg_green',
 
+      // Объект с CSS классами
+      objCssClasses: {
+        active: true,
+        valid: false,
+      },
+      objCustomCssClasses: {
+        done: true,
+        selected: false,
+      },
     }
   },
 
@@ -244,6 +253,11 @@ export default {
       this.items.sort((a, b) => a.localeCompare(b));
     },
 
+    // Объект с CSS классами
+    // Переключение выбора параграфа
+    toggleObjSelected() {
+      this.objCustomCssClasses.selected = !this.objCustomCssClasses.selected;
+    }
   },
 
   // Вычисляемые свойства во Vue
@@ -852,6 +866,21 @@ export default {
       <p v-bind:class="cssClasses">Пользовательский класс</p>
       <p :class="cssClasses">Пользовательский класс</p>
 
+      <br>
+      <br>
+
+      <!--Объект с CSS классами во Vue-->
+
+      <p>Объект с CSS классами</p>
+
+      <p :class="objCssClasses">Текст с объектом стилей</p>
+      <br>
+
+      <p>
+        <button type="submit" @click="toggleObjSelected">Переключить выбор параграфа</button>
+      </p>
+      <p :class="objCustomCssClasses">Текст с пользовательским объектом стилей</p>
+
 
     </div>
 
@@ -883,11 +912,24 @@ div ul li {
   text-align: left;
 }
 
-.red {
+.red, .selected {
   color: #f00;
 }
 
 .bg_green {
-  background: hsla(160, 100%, 37%, 1);;
+  background: hsla(160, 100%, 37%, 1);
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.valid {
+  color: hsla(160, 100%, 37%, 1);
+  transition: 2.4s;
+}
+
+.done {
+  text-decoration: line-through;
 }
 </style>
