@@ -932,6 +932,17 @@ export default {
         Параграф через data.
       </p>
 
+      <br>
+      <br>
+
+      <!--Стилизация через атрибут style во Vue-->
+
+      <p>Стилизация через атрибут style</p>
+      <br>
+
+      <p :style="{background: 'hsla(160, 100%, 37%, 1)', color: '#fff', fontSize: '15px', border: '3px solid #f00', fontFamily: 'bolder'}">
+        Параграф через атрибут style.
+      </p>
 
     </div>
 
