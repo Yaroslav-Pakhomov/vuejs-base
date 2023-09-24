@@ -85,7 +85,11 @@ export default {
         {id: 1, name: 'name1', surname: 'surname1',},
         {id: 2, name: 'name2', surname: 'surname2',},
         {id: 3, name: 'name3', surname: 'surname3',},
-      ]
+      ],
+
+      // Атрибут class
+      str_class: 'active valid',
+      cssClasses: 'red bg_green',
 
     }
   },
@@ -833,6 +837,21 @@ export default {
       <p class="red">Красный цвет</p>
       <p class="green">Зелёный цвет</p>
 
+      <br>
+      <br>
+
+      <!--Атрибут class во Vue-->
+
+      <p>Атрибут class</p>
+
+      <!--Работа с атрибутом class происходит через директиву v-bind или ее сокращенную форму ":"-->
+
+      <p v-bind:class="str_class">Атрибут class в теге</p>
+      <p :class="str_class">Атрибут class в теге</p>
+      <br>
+      <p v-bind:class="cssClasses">Пользовательский класс</p>
+      <p :class="cssClasses">Пользовательский класс</p>
+
 
     </div>
 
@@ -866,5 +885,9 @@ div ul li {
 
 .red {
   color: #f00;
+}
+
+.bg_green {
+  background: hsla(160, 100%, 37%, 1);;
 }
 </style>
