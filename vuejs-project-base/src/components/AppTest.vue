@@ -100,6 +100,13 @@ export default {
         done: true,
         selected: false,
       },
+
+      // CSS классы через data
+      isActive: true,
+      isValid: false,
+      isDone: true,
+      isSelected: false,
+      isBgGreen: false,
     }
   },
 
@@ -911,6 +918,18 @@ export default {
       </p>
       <p :class="{active: false, 'valid': true}">
         Ин лайн параграф.
+      </p>
+
+      <br>
+      <br>
+
+      <!--CSS классы через data во Vue-->
+
+      <p>CSS классы через data</p>
+      <br>
+
+      <p :class="{active: isActive, 'valid': isValid, 'done': isDone, 'selected': isSelected, 'bg_green': isBgGreen}">
+        Параграф через data.
       </p>
 
 
