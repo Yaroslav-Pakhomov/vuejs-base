@@ -107,6 +107,9 @@ export default {
       isDone: true,
       isSelected: false,
       isBgGreen: false,
+
+      // Двусторонняя привязка данных к инпутам
+      bind_property: 'св-во привязки',
     }
   },
 
@@ -943,6 +946,28 @@ export default {
       <p :style="{background: 'hsla(160, 100%, 37%, 1)', color: '#fff', fontSize: '15px', border: '3px solid #f00', fontFamily: 'bolder'}">
         Параграф через атрибут style.
       </p>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2>Форма</h2>
+
+    <div>
+
+      <!--Двусторонняя привязка данных к инпутам во Vue-->
+
+      <p>Двусторонняя привязка данных к инпутам</p>
+
+      <!-- Директива v-model - связывает свойство и инпут таким образом, чтобы изменение любого из них приводило к изменению другого-->
+      <p>
+        <input v-model="bind_property">
+        <p>{{ bind_property.toUpperCase() }}</p>
+      </p>
+
 
     </div>
 
