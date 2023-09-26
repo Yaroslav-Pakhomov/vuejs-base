@@ -110,6 +110,15 @@ export default {
 
       // Двусторонняя привязка данных к инпутам
       bind_property: 'св-во привязки',
+
+      // Получение данных формы по событию
+      form_property: 0,
+      form_property2: 0,
+      form_calculate_property: 0,
+      form_fio_property: '',
+      form_surname_property: '',
+      form_name_property: '',
+      form_patronymic_property: '',
     }
   },
 
@@ -273,7 +282,42 @@ export default {
     // Переключение выполнения
     toggleObjDone() {
       this.objCustomCssClasses.done = !this.objCustomCssClasses.done;
-    }
+    },
+
+    // Получение данных формы по событию
+    // Вычисление квадрата
+    getSquareNumber() {
+      this.form_calculate_property = this.form_property ** 2;
+    },
+
+    // Вычисление корня квадратного
+    getRootNumber() {
+      this.form_calculate_property = this.form_property ** (1 / 2);
+    },
+
+    // Вычисление суммы чисел
+    getSumNumbers() {
+      this.form_calculate_property = (+this.form_property) + (+this.form_property2);
+    },
+
+    // Меняем числа местами
+    getReverseNumbers() {
+      let middle_number = this.form_property;
+
+      this.form_property = this.form_property2;
+      this.form_property2 = middle_number;
+    },
+
+    // Разделяем ФИО отдельно
+    getFioSeparate() {
+      let arr_fio = this.form_fio_property.split(' ');
+
+      this.form_surname_property = arr_fio[0];
+      this.form_name_property = arr_fio[1];
+      this.form_patronymic_property = arr_fio[2];
+    },
+
+
   },
 
   // Вычисляемые свойства во Vue
@@ -968,8 +1012,54 @@ export default {
         <p>{{ bind_property.toUpperCase() }}</p>
       </p>
 
+      <br>
+      <br>
+
+      <!--Получение данных формы по событию во Vue-->
+
+      <p>Получение данных формы по событию</p>
+      <br>
+
+      <p>{{ form_calculate_property }}</p>
+
+      <p>
+        <label for="form_property">Число 1:</label>
+        <input v-model="form_property" id="form_property">
+        <br>
+        <label for="form_property2">Число 2:</label>
+        <input v-model="form_property2" id="form_property2">
+        <br>
+        <button type="submit" @click="getSquareNumber">Квадрат</button>
+        <br>
+        <button type="submit" @click="getRootNumber">Корень</button>
+        <br>
+        <button type="submit" @click="getSumNumbers">Сумма чисел</button>
+        <br>
+        <button type="submit" @click="getReverseNumbers">Реверс</button>
+
+        <br>
+        <br>
+        <br>
+
+        <label for="form_fio_property">ФИО:</label>
+        <input v-model="form_fio_property" id="form_fio_property">
+        <br>
+        <button type="submit" @click="getFioSeparate">Разделить ФИО</button>
+
+        <p>{{ form_surname_property }}</p>
+        <p>{{ form_name_property }}</p>
+        <p>{{ form_patronymic_property }}</p>
+
+
+      </p>
+
 
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
 
 
   </div>
