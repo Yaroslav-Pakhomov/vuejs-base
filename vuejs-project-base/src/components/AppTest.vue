@@ -119,6 +119,11 @@ export default {
       form_surname_property: '',
       form_name_property: '',
       form_patronymic_property: '',
+
+      // Работа с textarea
+      form_textarea_property: 'Текст по умолчанию',
+      form_textarea_arr_words: [],
+
     }
   },
 
@@ -317,6 +322,10 @@ export default {
       this.form_patronymic_property = arr_fio[2];
     },
 
+    // Разделяем ФИО отдельно
+    getArrayWords() {
+      this.form_textarea_arr_words = this.form_textarea_property.trim().split(' ');
+    },
 
   },
 
@@ -1023,10 +1032,10 @@ export default {
       <p>{{ form_calculate_property }}</p>
 
       <p>
-        <label for="form_property">Число 1:</label>
+        <label for="form_property">Число 1: </label>
         <input v-model="form_property" id="form_property">
         <br>
-        <label for="form_property2">Число 2:</label>
+        <label for="form_property2">Число 2: </label>
         <input v-model="form_property2" id="form_property2">
         <br>
         <button type="submit" @click="getSquareNumber">Квадрат</button>
@@ -1041,7 +1050,7 @@ export default {
         <br>
         <br>
 
-        <label for="form_fio_property">ФИО:</label>
+        <label for="form_fio_property">ФИО: </label>
         <input v-model="form_fio_property" id="form_fio_property">
         <br>
         <button type="submit" @click="getFioSeparate">Разделить ФИО</button>
@@ -1052,6 +1061,34 @@ export default {
 
 
       </p>
+
+      <br>
+      <br>
+
+      <!--Работа с textarea во Vue-->
+
+      <p>Работа с textarea</p>
+      <br>
+
+      <p>
+        <textarea v-model="form_textarea_property"></textarea>
+      </p>
+      <br>
+
+      <p>
+        <button type="submit" @click="getArrayWords">Получить список слов</button>
+      </p>
+      <br>
+
+      <p>{{ form_textarea_property }}</p>
+      <br>
+
+      <ul>
+        <li v-for="word in form_textarea_arr_words">
+          {{ word }}
+        </li>
+      </ul>
+      <br>
 
 
     </div>
