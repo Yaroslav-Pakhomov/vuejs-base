@@ -124,6 +124,9 @@ export default {
       form_textarea_property: 'Текст по умолчанию',
       form_textarea_arr_words: [],
 
+      // Работа с чекбоксами
+      form_checkbox_property: true,
+
     }
   },
 
@@ -1032,11 +1035,15 @@ export default {
       <p>{{ form_calculate_property }}</p>
 
       <p>
-        <label for="form_property">Число 1: </label>
-        <input v-model="form_property" id="form_property">
+        <label>
+          Число 1:
+          <input v-model="form_property">
+        </label>
         <br>
-        <label for="form_property2">Число 2: </label>
-        <input v-model="form_property2" id="form_property2">
+        <label>
+          Число 2:
+          <input v-model="form_property2">
+        </label>
         <br>
         <button type="submit" @click="getSquareNumber">Квадрат</button>
         <br>
@@ -1050,8 +1057,10 @@ export default {
         <br>
         <br>
 
-        <label for="form_fio_property">ФИО: </label>
-        <input v-model="form_fio_property" id="form_fio_property">
+        <label>
+          ФИО:
+          <input v-model="form_fio_property">
+        </label>
         <br>
         <button type="submit" @click="getFioSeparate">Разделить ФИО</button>
 
@@ -1088,7 +1097,24 @@ export default {
           {{ word }}
         </li>
       </ul>
+
       <br>
+      <br>
+
+      <!--Работа с чекбоксами во Vue-->
+
+      <p>Работа с чекбоксами</p>
+      <br>
+
+      <p>
+        <label>
+          Чекбокс
+          <input type="checkbox" v-model="form_checkbox_property">
+        </label>
+      </p>
+      <p>{{ form_checkbox_property }}</p>
+      <p>{{ form_checkbox_property ? 'yes' : 'no' }}</p>
+      <p v-if="form_checkbox_property">Скрытый параграф</p>
 
 
     </div>
