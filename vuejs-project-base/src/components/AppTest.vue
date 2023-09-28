@@ -141,6 +141,9 @@ export default {
       selected_day: this.selectedDay(),
       selected_month: this.selectedMonth(),
       selected_year: this.selectedYear(),
+
+      // Блокировка элементов
+      isDisabled: true,
     }
   },
 
@@ -374,7 +377,12 @@ export default {
 
       // рекурсивно вызываем функцию-генератор
       yield* this.range(start + 1, end);
-    }
+    },
+
+    // Блокировка элементов
+    changeDisabled() {
+      this.isDisabled = !this.isDisabled;
+    },
 
 
   },
@@ -1262,6 +1270,25 @@ export default {
         . {{ selected_year }}
       </p>
       <p>{{ weekDay }}</p>
+
+      <br>
+      <br>
+
+      <!--Блокировка элементов во Vue-->
+
+      <p>Блокировка элементов</p>
+      <br>
+
+      <p>
+        <input type="text" v-bind:disabled="isDisabled">
+        <br>
+        <button type="submit" @click="changeDisabled">Изменить доступность</button>
+        <br>
+        <label>
+          Вкл/выкл доступность
+          <input type="checkbox" v-model="isDisabled">
+        </label>
+      </p>
 
 
     </div>
