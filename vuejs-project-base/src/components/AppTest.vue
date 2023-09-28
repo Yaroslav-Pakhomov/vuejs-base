@@ -127,6 +127,12 @@ export default {
       // Работа с чекбоксами
       form_checkbox_property: true,
 
+      // Работа с радио кнопками
+      form_choice_radio: '',
+      rus: 'rus',
+      due: 'due',
+      nor: 'nor',
+
     }
   },
 
@@ -791,7 +797,7 @@ export default {
 
       <ul>
         <!--Объединение тегов без родителя-->
-        <template v-for="(elem, key) in items">
+        <template v-for="(elem) in items">
           <li>{{ elem }}</li>
           <li class="divider">divider</li>
         </template>
@@ -1115,6 +1121,41 @@ export default {
       <p>{{ form_checkbox_property }}</p>
       <p>{{ form_checkbox_property ? 'yes' : 'no' }}</p>
       <p v-if="form_checkbox_property">Скрытый параграф</p>
+
+      <br>
+      <br>
+
+      <!--Работа с радио кнопками во Vue-->
+
+      <p>Работа с радио кнопками</p>
+      <br>
+
+      <p>
+        Язык
+        <br>
+
+        <label>
+          Русский
+          <input type="radio" v-model="form_choice_radio" value="rus">
+        </label>
+        <br>
+        <label>
+          Германский
+          <input type="radio" v-model="form_choice_radio" value="due">
+        </label>
+        <br>
+        <label>
+          Норвежский
+          <input type="radio" v-model="form_choice_radio" value="nor">
+        </label>
+      </p>
+      <br>
+
+      <p>Ваш выбор: {{ form_choice_radio }}</p>
+
+      <p v-if="form_choice_radio === rus">Россия превыше всего</p>
+      <p v-if="form_choice_radio === due">Deutschland über allen</p>
+      <p v-if="form_choice_radio === nor">Norge først og fremst</p>
 
 
     </div>
