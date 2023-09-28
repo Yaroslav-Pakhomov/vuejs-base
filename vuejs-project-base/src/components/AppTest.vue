@@ -133,6 +133,14 @@ export default {
       due: 'due',
       nor: 'nor',
 
+      // Работа с выпадающими списками/селектами
+      select_options: ['value1', 'value2', 'value3'],
+      selected: 'value2',
+
+      current_date: new Date(),
+      selected_day: this.selectedDay(),
+      selected_month: this.selectedMonth(),
+      selected_year: this.selectedYear(),
     }
   },
 
@@ -336,6 +344,39 @@ export default {
       this.form_textarea_arr_words = this.form_textarea_property.trim().split(' ');
     },
 
+    // Работа с выпадающими списками/селектами, формирование селекта в цикле
+    // Кол-во дней в выбранном месяце
+    daysInMonth(month, year) {
+      return new Date(year, month, 0).getDate();
+    },
+
+    // Текущий день
+    selectedDay() {
+      return (new Date()).getDate();
+    },
+    // Текущий месяц
+    selectedMonth() {
+      let month = +(new Date()).getMonth();
+      month++;
+      return month;
+    },
+    // Текущий год
+    selectedYear() {
+      return (new Date()).getFullYear();
+    },
+
+    // ...this.range(1, 12) - вызов, получение массива чисел в нужном диапазоне
+    * range(start, end) {
+      yield start;
+
+      // если начальное и конечное значение совпадают
+      if (start === end) return;
+
+      // рекурсивно вызываем функцию-генератор
+      yield* this.range(start + 1, end);
+    }
+
+
   },
 
   // Вычисляемые свойства во Vue
@@ -347,6 +388,29 @@ export default {
       return this.cost * this.amount;
     },
 
+    // Работа с выпадающими списками/селектами
+    // Кол-во дней в текущем месяце для выпадающего списка
+    select_days() {
+      let number_days = this.daysInMonth(this.selected_month, this.selected_year);
+      return [...this.range(1, number_days)];
+    },
+
+    // Кол-во месяцев для выпадающего списка
+    select_months() {
+      return [...this.range(1, 12)];
+    },
+
+    // Кол-во лет для выпадающего списка
+    select_years() {
+      return [...this.range(1945, 2030)];
+    },
+
+    // День недели
+    weekDay() {
+      let month = this.selected_month;
+      month--;
+      return this.getWeekDay(this.selected_day, month, this.selected_year);
+    },
 
   },
 
@@ -1156,6 +1220,48 @@ export default {
       <p v-if="form_choice_radio === rus">Россия превыше всего</p>
       <p v-if="form_choice_radio === due">Deutschland über allen</p>
       <p v-if="form_choice_radio === nor">Norge først og fremst</p>
+
+      <br>
+      <br>
+
+      <!--Работа с выпадающими списками/селектами во Vue-->
+
+      <p>Работа с выпадающими списками/селектами</p>
+      <br>
+
+      <p>
+        <select v-model="selected">
+          <option v-for="select_option in select_options">{{ select_option }}</option>
+        </select>
+      </p>
+      <br>
+
+      <p>Выбранный пункт: {{ selected }}</p>
+
+      <br>
+      <p>
+        Дата
+        <br>
+        Число:
+        <select v-model="selected_day">
+          <option v-for="select_day in select_days">{{ select_day }}</option>
+        </select>
+        Месяц:
+        <select v-model="selected_month">
+          <option v-for="select_month in select_months">{{ select_month }}</option>
+        </select>
+        Год:
+        <select v-model="selected_year">
+          <option v-for="select_year in select_years">{{ select_year }}</option>
+        </select>
+      </p>
+
+      <p>
+        {{ selected_day > 9 ? selected_day : '0' + selected_day }}
+        . {{ selected_month > 9 ? selected_month : '0' + selected_month }}
+        . {{ selected_year }}
+      </p>
+      <p>{{ weekDay }}</p>
 
 
     </div>
