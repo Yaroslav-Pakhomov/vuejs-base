@@ -144,6 +144,12 @@ export default {
 
       // Блокировка элементов
       isDisabled: true,
+
+      // Модификаторы клавиш
+      on_input_enter: '',
+      on_click_ctrl_left: false,
+      type_mouse_click: '',
+
     }
   },
 
@@ -384,6 +390,32 @@ export default {
       this.isDisabled = !this.isDisabled;
     },
 
+    // Модификаторы клавиш
+    // Нажатие 'Enter'
+    onInputEnter(event) {
+      this.on_input_enter = event.target.value;
+    },
+
+    // Нажатие 'Ctrl' + лев.кн.м.
+    onClickCtrlLeft() {
+      this.on_click_ctrl_left = !this.on_click_ctrl_left;
+    },
+
+    // Клик лев.кн.мыши
+    onClickLeft() {
+      this.type_mouse_click = 'Левая кн.мыши';
+    },
+
+    // Клик пр.кн.мыши
+    onClickRight() {
+      this.type_mouse_click = 'Правая кн.мыши';
+    },
+
+    // Клик ср.кн.мыши
+    onClickMiddle(event) {
+      event.preventDefault();
+      this.type_mouse_click = 'Средняя кн.мыши';
+    },
 
   },
 
@@ -1289,6 +1321,41 @@ export default {
           <input type="checkbox" v-model="isDisabled">
         </label>
       </p>
+
+      <br>
+      <br>
+
+      <!--Модификаторы клавиш во Vue-->
+
+      <p>Модификаторы клавиш</p>
+      <br>
+
+      <!--Нажатие 'Enter'-->
+      <p>
+        Нажатие 'Enter'
+        <input type="text" @keyup.enter="onInputEnter">
+      </p>
+      <p>{{ on_input_enter }}</p>
+      <br>
+
+      <!--Нажатие 'Ctrl' + лев.кн.м.-->
+      <p>
+        Нажатие 'Ctrl' + лев.кн.м.
+        <a href="#" @click.ctrl.left.exact.prevent="onClickCtrlLeft">Ссылка абзаца</a>
+      </p>
+      <p v-if="on_click_ctrl_left">Текст модификатора клавиш</p>
+      <br>
+
+      <!--Клик лев.кн.мыши, Клик пр.кн.мыши, Клик ср.кн.мыши-->
+      <p>
+        Клик лев.кн.мыши,
+        Клик пр.кн.мыши,
+        Клик ср.кн.мыши
+        <br>
+        <a href="#" @click.left.exact.prevent="onClickLeft" @click.right.exact.prevent="onClickRight"
+           @click.middle.exact.prevent="onClickMiddle">Ссылка абзаца</a>
+      </p>
+      <p>"{{ type_mouse_click }}"</p>
 
 
     </div>
