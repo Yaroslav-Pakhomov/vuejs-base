@@ -150,6 +150,10 @@ export default {
       on_click_ctrl_left: false,
       type_mouse_click: '',
 
+      // Форма для добавления элементов массива
+      form_items: ['a', 'b', 'c', 'd', 'e'],
+      form_new_item: '',
+
     }
   },
 
@@ -415,6 +419,16 @@ export default {
     onClickMiddle(event) {
       event.preventDefault();
       this.type_mouse_click = 'Средняя кн.мыши';
+    },
+
+    // Форма для добавления элементов массива
+    // Добавление элемента в конец массива
+    addEndFormNewItem() {
+      this.form_items.push(this.form_new_item);
+    },
+    // Добавление элемента в конец массива
+    addStartFormNewItem() {
+      this.form_items.unshift(this.form_new_item);
     },
 
   },
@@ -1357,6 +1371,27 @@ export default {
       </p>
       <p>"{{ type_mouse_click }}"</p>
 
+      <br>
+      <br>
+
+      <!--Форма для добавления элементов массива во Vue-->
+
+      <p>Форма для добавления элементов массива</p>
+      <br>
+
+      <p>
+        <button type="submit" @click="addStartFormNewItem">Добавить элемент в начало</button>
+        <button type="submit" @click="addEndFormNewItem">Добавить элемент в конец</button>
+        <br>
+        <input type="text" v-model="form_new_item">
+      </p>
+
+      <ul>
+        <li v-for="(item, index) in form_items" :key="index">
+          {{ index }} - {{ item }}
+        </li>
+      </ul>
+
 
     </div>
 
@@ -1391,6 +1426,10 @@ img {
 
 div ul li {
   text-align: left;
+}
+
+button {
+  color: #f00;
 }
 
 .red, .selected {
