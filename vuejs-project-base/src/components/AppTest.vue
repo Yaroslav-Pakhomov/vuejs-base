@@ -431,6 +431,12 @@ export default {
       this.form_items.unshift(this.form_new_item);
     },
 
+    // Кнопка для удаления элемента массива
+    // Удаление эл-та по его индексу
+    removeFormItem(index) {
+      this.form_items.splice(index, 1);
+    },
+
   },
 
   // Вычисляемые свойства во Vue
@@ -1388,7 +1394,8 @@ export default {
 
       <ul>
         <li v-for="(item, index) in form_items" :key="index">
-          {{ index }} - {{ item }}
+          <span @click="removeFormItem(index)">{{ index }} - {{ item }} </span>
+          <button type="submit" @click="removeFormItem(index)">Х</button>
         </li>
       </ul>
 
