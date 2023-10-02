@@ -154,6 +154,18 @@ export default {
       form_items: ['a', 'b', 'c', 'd', 'e'],
       form_new_item: '',
 
+      // Кнопка для удаления из массива объектов
+      form_users: [
+        {id: 1, name: 'name1', surname: 'surname1',},
+        {id: 2, name: 'name2', surname: 'surname2',},
+        {id: 3, name: 'name3', surname: 'surname3',},
+      ],
+
+      form_data_users: [
+        {id: 1, name: 'name1', salary: 100, age: 30,},
+        {id: 2, name: 'name2', salary: 200, age: 40,},
+        {id: 3, name: 'name3', salary: 300, age: 50,},
+      ],
     }
   },
 
@@ -435,6 +447,21 @@ export default {
     // Удаление эл-та по его индексу
     removeFormItem(index) {
       this.form_items.splice(index, 1);
+    },
+
+    // Кнопка для удаления из массива объектов
+    // Удаление эл-та объекта по его ID из объекта form_users
+    removeFormUser(id) {
+      this.form_users = this.form_users.filter(function (user) {
+        return user.id !== id;
+      });
+    },
+
+    // Удаление эл-та объекта по его ID из объекта form_data_users
+    removeTableUser(id) {
+      this.form_data_users = this.form_data_users.filter(function (user) {
+        return user.id !== id;
+      });
     },
 
   },
@@ -1395,9 +1422,43 @@ export default {
       <ul>
         <li v-for="(item, index) in form_items" :key="index">
           <span @click="removeFormItem(index)">{{ index }} - {{ item }} </span>
+          <!--Кнопка для удаления элемента массива-->
           <button type="submit" @click="removeFormItem(index)">Х</button>
         </li>
       </ul>
+
+      <br>
+      <br>
+
+      <!--Кнопка для удаления из массива объектов во Vue-->
+
+      <p>Кнопка для удаления из массива объектов</p>
+      <br>
+
+      <ul>
+        <li v-for="(user) in form_users" :key="user.id">
+          Имя: {{ user.name }}, Фамилия: {{ user.surname }}
+          <button type="submit" @click="removeFormUser(user.id)">Х</button>
+        </li>
+      </ul>
+      <br>
+
+      <table>
+        <tr>
+          <th>Имя</th>
+          <th>Зарплата</th>
+          <th>Возраст</th>
+          <th>Действие</th>
+        </tr>
+        <tr v-for="user in form_data_users" :key="user.id">
+          <td>{{ user.name }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.salary }}</td>
+          <td>
+            <button type="submit" @click="removeTableUser(user.id)">Х</button>
+          </td>
+        </tr>
+      </table>
 
 
     </div>
@@ -1437,6 +1498,17 @@ div ul li {
 
 button {
   color: #f00;
+}
+
+table {
+  margin: 0 auto;
+}
+
+table,
+table th,
+table td {
+  border: 1px solid;
+  text-align: center;
 }
 
 .red, .selected {
