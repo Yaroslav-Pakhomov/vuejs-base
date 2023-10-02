@@ -156,15 +156,15 @@ export default {
 
       // Кнопка для удаления из массива объектов
       form_users: [
-        {id: 1, name: 'name1', surname: 'surname1',},
-        {id: 2, name: 'name2', surname: 'surname2',},
-        {id: 3, name: 'name3', surname: 'surname3',},
+        {id: 1, name: 'name1', surname: 'surname1', isEdit: false,},
+        {id: 2, name: 'name2', surname: 'surname2', isEdit: false,},
+        {id: 3, name: 'name3', surname: 'surname3', isEdit: false,},
       ],
 
       form_data_users: [
-        {id: 1, name: 'name1', salary: 100, age: 30,},
-        {id: 2, name: 'name2', salary: 200, age: 40,},
-        {id: 3, name: 'name3', salary: 300, age: 50,},
+        {id: 1, name: 'name1', salary: 100, age: 30, isEdit: false,},
+        {id: 2, name: 'name2', salary: 200, age: 40, isEdit: false,},
+        {id: 3, name: 'name3', salary: 300, age: 50, isEdit: false,},
       ],
     }
   },
@@ -462,6 +462,16 @@ export default {
       this.form_data_users = this.form_data_users.filter(function (user) {
         return user.id !== id;
       });
+    },
+
+    // Редактирование эл-та объекта по его ID из объекта form_users
+    editUser(user) {
+      user.isEdit = true;
+    },
+
+    // Сохранение эл-та объекта по его ID из объекта form_users
+    saveUser(user) {
+      user.isEdit = false;
     },
 
   },
@@ -1437,8 +1447,23 @@ export default {
 
       <ul>
         <li v-for="(user) in form_users" :key="user.id">
-          Имя: {{ user.name }}, Фамилия: {{ user.surname }}
-          <button type="submit" @click="removeFormUser(user.id)">Х</button>
+          <template v-if="!user.isEdit">
+
+            Имя: {{ user.name }}, Фамилия: {{ user.surname }}
+            <button type="submit" @click="editUser(user)">Редактировать</button>
+            <button type="submit" @click="removeFormUser(user.id)">Х</button>
+
+          </template>
+
+          <!--Форма для редактирования массива объектов во Vue-->
+          <template v-else>
+
+            <p>Форма для редактирования массива объектов</p>
+            <input v-model="user.name">
+            <input v-model="user.surname">
+            <button type="submit" @click="saveUser(user)">Сохранить</button>
+
+          </template>
         </li>
       </ul>
       <br>
@@ -1451,12 +1476,33 @@ export default {
           <th>Действие</th>
         </tr>
         <tr v-for="user in form_data_users" :key="user.id">
-          <td>{{ user.name }}</td>
-          <td>{{ user.age }}</td>
-          <td>{{ user.salary }}</td>
-          <td>
-            <button type="submit" @click="removeTableUser(user.id)">Х</button>
-          </td>
+
+          <template v-if="!user.isEdit">
+
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.salary }}</td>
+            <td>
+              <button type="submit" @click="editUser(user)">Редактировать</button>
+              <br>
+              <button type="submit" @click="removeTableUser(user.id)">Х</button>
+            </td>
+
+          </template>
+
+          <!--Форма для редактирования массива объектов во Vue-->
+          <template v-else>
+
+            <td><input v-model="user.name"></td>
+            <td><input v-model="user.age"></td>
+            <td><input v-model="user.salary"></td>
+            <td>
+              <button type="submit" @click="saveUser(user)">Сохранить</button>
+              <br>
+              - Форма для редактирования
+            </td>
+
+          </template>
         </tr>
       </table>
 
