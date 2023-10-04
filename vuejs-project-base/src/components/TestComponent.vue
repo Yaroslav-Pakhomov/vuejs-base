@@ -8,11 +8,27 @@ export default {
   components: {},
 
   // Получение данных из родительского элемента
-  props: [
-    'name', 'surname',
-    'age', 'arg_arr', 'arg_obj', 'arg_bool',
-    'parent_name', 'parent_surname', 'parent_age', 'parent_salary',
-  ],
+  props: {
+    name: String,
+    surname: String,
+    age: Number,
+    arg_arr: Array,
+    arg_obj: Object,
+    arg_bool: Boolean,
+    parent_name: String,
+    parent_surname: String,
+    parent_age: Number,
+    parent_salary: Number,
+
+    // Типы свойств
+    // title: String,
+    // likes: Number,
+    // isPublished: Boolean,
+    // commentIds: Array,
+    // author: Object,
+    // callback: Function,
+    // contactsPromise: Promise // или любой другой конструктор
+  },
 
   // Переменные
   data() {
@@ -33,7 +49,6 @@ export default {
   computed: {},
 
 }
-
 </script>
 
 <template>
@@ -93,7 +108,6 @@ export default {
     <p>Фамилия: {{ parent_surname.toUpperCase() }}</p>
     <p>Возраст: {{ parent_age }}</p>
     <p>Зарплата: {{ parent_salary }}</p>
-
 
   </div>
   <br>
