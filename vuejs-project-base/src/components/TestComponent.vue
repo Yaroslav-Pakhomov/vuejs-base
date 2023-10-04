@@ -7,6 +7,9 @@ export default {
   // Подключаемые компоненты
   components: {},
 
+  // Получение данных из родительского элемента
+  props: ['name', 'surname', 'age',],
+
   // Переменные
   data() {
     return {
@@ -15,7 +18,12 @@ export default {
   },
 
   // Функции
-  methods: {},
+  methods: {
+    // Слово с заглавной буквы
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  },
 
   // Вычисляемые свойства
   computed: {},
@@ -32,6 +40,15 @@ export default {
 
     <p>{{ var_test_comp }}</p>
     <br>
+    <br>
+
+    <!--Передача данных в дочерний компонент из родительского во Vue-->
+    <p>Передача данных в дочерний компонент из родительского</p>
+    <br>
+    <p>Имя: {{ this.capitalizeFirstLetter(name) }}</p>
+    <p>Фамилия: {{ surname.toUpperCase() }}</p>
+    <p>Возраст: {{ age }}</p>
+
 
   </div>
   <br>

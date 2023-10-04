@@ -47,7 +47,8 @@ export default {
 
     <Form/>
 
-    <TestComponent/>
+    <!--  Передача данных в дочерний компонент  -->
+    <TestComponent name='john' surname='smith' age='32'/>
 
   </div>
 </template>
