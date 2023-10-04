@@ -11,7 +11,7 @@ export default {
   props: {
     name: String,
     surname: String,
-    age: Number,
+    age: String,
     arg_arr: Array,
     arg_obj: Object,
     arg_bool: Boolean,

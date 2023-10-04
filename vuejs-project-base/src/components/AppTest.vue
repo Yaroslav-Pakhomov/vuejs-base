@@ -6,6 +6,7 @@ import Cycles from "@/components/Cycles.vue";
 import Styles from "@/components/Styles.vue";
 import Form from "@/components/Form.vue";
 import TestComponent from "@/components/TestComponent.vue";
+import ArrComponent from "@/components/ArrComponent.vue";
 
 export default {
   name: 'AppTest',
@@ -17,6 +18,7 @@ export default {
     Styles,
     Form,
     TestComponent,
+    ArrComponent,
   },
 
   // Переменные
@@ -26,11 +28,21 @@ export default {
       parent_surname: 'Stark',
       parent_age: 32,
       parent_salary: 2000,
+      parent_arr_users: [
+        {id: 1, name: 'john', surname: 'smith', age: 20, salary: 2000},
+        {id: 2, name: 'tony', surname: 'stark', age: 37, salary: 200000},
+        {id: 3, name: 'tony', surname: 'montana', age: 32, salary: 1000000},
+      ],
     }
   },
 
   // Методы
-  methods: {},
+  methods: {
+    // Слово с заглавной буквы
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  },
 
   // Вычисляемые свойства во Vue
   computed: {},
@@ -58,6 +70,14 @@ export default {
                    :arg_arr='["a", "b", "c", 1, 2, 3,]' :arg_obj='{a:1 , b:2, c:3, }' :arg_bool='true'
                    :parent_name='parent_name' :parent_surname='parent_surname'
                    :parent_age='parent_age' :parent_salary='parent_salary'/>
+
+    <!--  Создание компонентов в цикле  -->
+    <ArrComponent v-for="user in parent_arr_users" :key=user.id :name='user.name' :surname='user.surname' :age=user.age
+                  :salary=user.salary :capitalizeFirstLetter='capitalizeFirstLetter'/>
+    <br>
+    <br>
+    <br>
+    <br>
 
   </div>
 </template>
