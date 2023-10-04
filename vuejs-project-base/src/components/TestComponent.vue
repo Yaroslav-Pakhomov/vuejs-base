@@ -8,7 +8,11 @@ export default {
   components: {},
 
   // Получение данных из родительского элемента
-  props: ['name', 'surname', 'age', 'arg_arr', 'arg_obj', 'arg_bool',],
+  props: [
+    'name', 'surname',
+    'age', 'arg_arr', 'arg_obj', 'arg_bool',
+    'parent_name', 'parent_surname', 'parent_age', 'parent_salary',
+  ],
 
   // Переменные
   data() {
@@ -78,6 +82,17 @@ export default {
     <br>
 
     <p>{{ arg_bool }}</p>
+    <br>
+    <br>
+
+    <!--Передача свойств объекта data в дочерний компонент из родительского во Vue-->
+    <p>Передача свойств объекта data в дочерний компонент из родительского</p>
+    <br>
+
+    <p>Имя: {{ this.capitalizeFirstLetter(parent_name) }}</p>
+    <p>Фамилия: {{ parent_surname.toUpperCase() }}</p>
+    <p>Возраст: {{ parent_age }}</p>
+    <p>Зарплата: {{ parent_salary }}</p>
 
 
   </div>

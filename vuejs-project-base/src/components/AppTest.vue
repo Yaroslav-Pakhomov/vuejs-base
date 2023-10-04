@@ -21,7 +21,12 @@ export default {
 
   // Переменные
   data() {
-    return {}
+    return {
+      parent_name: 'Tony',
+      parent_surname: 'Stark',
+      parent_age: 32,
+      parent_salary: 2000,
+    }
   },
 
   // Методы
@@ -49,8 +54,10 @@ export default {
 
     <!--  Передача данных в дочерний компонент  -->
     <!--  Для этого нужно байндить атрибут через директиву v-bind или ее сокращенную форму ":".  -->
-    <TestComponent name='john' surname='smith' age='32' :arg_arr='["a", "b", "c", 1, 2, 3,]'
-                   :arg_obj='{a:1 , b:2, c:3, }' :arg_bool='true'/>
+    <TestComponent name='john' surname='smith' age='32'
+                   :arg_arr='["a", "b", "c", 1, 2, 3,]' :arg_obj='{a:1 , b:2, c:3, }' :arg_bool='true'
+                   :parent_name='parent_name' :parent_surname='parent_surname'
+                   :parent_age='parent_age' :parent_salary='parent_salary'/>
 
   </div>
 </template>
