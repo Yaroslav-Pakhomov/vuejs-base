@@ -48,7 +48,9 @@ export default {
     <Form/>
 
     <!--  Передача данных в дочерний компонент  -->
-    <TestComponent name='john' surname='smith' age='32'/>
+    <!--  Для этого нужно байндить атрибут через директиву v-bind или ее сокращенную форму ":".  -->
+    <TestComponent name='john' surname='smith' age='32' :arg_arr='["a", "b", "c", 1, 2, 3,]'
+                   :arg_obj='{a:1 , b:2, c:3, }' :arg_bool='true'/>
 
   </div>
 </template>

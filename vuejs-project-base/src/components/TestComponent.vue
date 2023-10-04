@@ -8,7 +8,7 @@ export default {
   components: {},
 
   // Получение данных из родительского элемента
-  props: ['name', 'surname', 'age',],
+  props: ['name', 'surname', 'age', 'arg_arr', 'arg_obj', 'arg_bool',],
 
   // Переменные
   data() {
@@ -48,6 +48,36 @@ export default {
     <p>Имя: {{ this.capitalizeFirstLetter(name) }}</p>
     <p>Фамилия: {{ surname.toUpperCase() }}</p>
     <p>Возраст: {{ age }}</p>
+    <br>
+    <br>
+
+    <!--Передача данных любого типа в дочерний компонент из родительского во Vue-->
+    <p>Передача данных любого типа в дочерний компонент из родительского</p>
+    <br>
+
+    <p>
+      {{ arg_arr }}
+      <br>
+      <ul>
+        <li v-for="(elem, index) in arg_arr" :key="index">
+          Индекс - {{ index }}, элемент - {{ elem }}
+        </li>
+      </ul>
+    </p>
+    <br>
+
+    <p>
+      {{ arg_obj }}
+      <br>
+      <ul>
+        <li v-for="(obj, key, index) in arg_obj" :key="key">
+          Индекс - {{ index }}, ключ - {{ key }}, объект - {{ obj }}
+        </li>
+      </ul>
+    </p>
+    <br>
+
+    <p>{{ arg_bool }}</p>
 
 
   </div>
