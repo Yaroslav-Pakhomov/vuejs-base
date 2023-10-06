@@ -33,6 +33,8 @@ export default {
         {id: 2, name: 'tony', surname: 'stark', age: 37, salary: 200000},
         {id: 3, name: 'tony', surname: 'montana', age: 32, salary: 1000000},
       ],
+      initialCounter: 0,
+      size: " middle ",
     }
   },
 
@@ -73,7 +75,8 @@ export default {
 
     <!--  Создание компонентов в цикле  -->
     <ArrComponent v-for="user in parent_arr_users" :key=user.id :name='user.name' :surname='user.surname' :age=user.age
-                  :salary=user.salary :capitalizeFirstLetter='capitalizeFirstLetter'/>
+                  :salary=user.salary :capitalizeFirstLetter='capitalizeFirstLetter'
+                  :initialCounter='initialCounter' :size="size"/>
     <br>
     <br>
     <br>
