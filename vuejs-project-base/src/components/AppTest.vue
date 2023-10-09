@@ -7,6 +7,7 @@ import Styles from "@/components/Styles.vue";
 import Form from "@/components/Form.vue";
 import TestComponent from "@/components/TestComponent.vue";
 import ArrComponent from "@/components/ArrComponent.vue";
+import WorkComponent from "@/components/WorkComponent.vue";
 
 export default {
   name: 'AppTest',
@@ -19,6 +20,7 @@ export default {
     Form,
     TestComponent,
     ArrComponent,
+    WorkComponent,
   },
 
   // Переменные
@@ -43,7 +45,16 @@ export default {
     // Слово с заглавной буквы
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    },
+    func() {
+      alert('xxx');
+    },
+    log1() {
+      console.log('Функция 1');
+    },
+    log2() {
+      console.log('Функция 2');
+    },
   },
 
   // Вычисляемые свойства во Vue
@@ -75,12 +86,16 @@ export default {
 
     <!--  Создание компонентов в цикле  -->
     <ArrComponent v-for="user in parent_arr_users" :key=user.id :name='user.name' :surname='user.surname' :age=user.age
-                  :salary=user.salary :capitalizeFirstLetter='capitalizeFirstLetter'
-                  :initialCounter='initialCounter' :size="size"/>
+                  :salary=user.salary :capitalizeFirstLetter='capitalizeFirstLetter'/>
+
     <br>
     <br>
     <br>
     <br>
+
+    <!--Передадим метод func() параметром @show в дочерний компонент-->
+    <WorkComponent :initialCounter='initialCounter' :size="size"
+                   @show="func" @action1="log1" @action2="log2"/>
 
   </div>
 </template>
