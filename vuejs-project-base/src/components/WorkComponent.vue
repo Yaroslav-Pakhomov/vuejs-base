@@ -3,7 +3,7 @@ export default {
   name: 'WorkComponent',
 
   // испускаемое событие в настройке emits
-  emits: ['show', "action1", 'action2'],
+  emits: ['show', "action1", 'action2', 'funcArgParent', 'workersDataParent'],
 
   props: {
     initialCounter: Number,
@@ -15,7 +15,11 @@ export default {
       // Однонаправленный поток данных
       // Два случая желания изменить входной параметр:
       // Случай первый - дочерний компонент хочет использовать его как локальное свойство данных в дальнейшем
-      counter: this.initialCounter
+      counter: this.initialCounter,
+
+      // Испускаемые события с аргументами/параметрами
+      work_name: '',
+      work_salary: 0,
     }
   },
 
@@ -29,6 +33,7 @@ export default {
       return this.size.trim().toUpperCase();
     },
 
+    // Испускаемые события
     // в обработчике клика заставим вызваться родительскую функцию
     // с помощью функции $emit в параметр передадим имя испускаемого события
     handle() {
@@ -40,6 +45,16 @@ export default {
     log2() {
       this.$emit('action2');
     },
+
+    // Испускаемые события с аргументами/параметрами
+    // аргументы передаются после названия функции (испускаемые события)
+    funcArg() {
+      this.$emit('funcArgParent', 'Аргумент 1', 'Аргумент 2');
+    },
+    setWorkersData() {
+      this.$emit('workersDataParent', this.work_name, this.work_salary);
+    },
+
   },
 }
 </script>
@@ -77,6 +92,27 @@ export default {
     </p>
     <br>
     <br>
+    <br>
+
+    <!--Испускаемые события с аргументами/параметрами во Vue-->
+    <p>Испускаемые события с аргументами/параметрами</p>
+    <br>
+    <p>
+      <button type="submit" @click="funcArg">Родительское событие с аргументами</button>
+    </p>
+    <br>
+    <br>
+    <p>
+      <label for="work_name">Введите имя: </label>
+      <input type="text" name="work_name" id="work_name" v-model="work_name">
+      <br>
+      <label for="work_salary">Введите зарплату: </label>
+      <input type="text" name="work_salary" id="work_salary" v-model="work_salary">
+      <br>
+      <br>
+      <button type="submit" @click="setWorkersData">Добавить работника</button>
+    </p>
+
 
   </div>
   <br>

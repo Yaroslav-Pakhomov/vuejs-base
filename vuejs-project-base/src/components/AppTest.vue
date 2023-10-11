@@ -46,6 +46,8 @@ export default {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },
+
+    // Испускаемые события
     func() {
       alert('xxx');
     },
@@ -55,6 +57,15 @@ export default {
     log2() {
       console.log('Функция 2');
     },
+
+    // Испускаемые события с аргументами/параметрами
+    funcArg(arg1, arg2) {
+      console.log(arg1 + ', ' + arg2);
+    },
+    workersData(name, salary) {
+      console.log('Имя: ' + name + ', зарплата - ' + salary);
+    },
+
   },
 
   // Вычисляемые свойства во Vue
@@ -95,7 +106,8 @@ export default {
 
     <!--Передадим метод func() параметром @show в дочерний компонент-->
     <WorkComponent :initialCounter='initialCounter' :size="size"
-                   @show="func" @action1="log1" @action2="log2"/>
+                   @show="func" @action1="log1" @action2="log2"
+                   @funcArgParent='funcArg' @workersDataParent='workersData'/>
 
   </div>
 </template>
