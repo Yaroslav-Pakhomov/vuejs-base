@@ -112,6 +112,13 @@ export default {
       <br>
       <button type="submit" @click="setWorkersData">Добавить работника</button>
     </p>
+    <br>
+    <p>Испускаемые события с аргументами/параметрами в атрибуте</p>
+    <p>
+      <button type="submit" @click="$emit('workersDataParent', work_name, work_salary)">Добавить работника (в
+        атрибуте)
+      </button>
+    </p>
 
 
   </div>
