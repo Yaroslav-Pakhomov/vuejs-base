@@ -94,6 +94,17 @@ export default {
       });
     },
 
+    // Реактивное редактирование данных компонента
+    changeElemUsers(id, name, surname) {
+      this.users = this.users.map((user) => {
+        if (user.id === id) {
+          user.name = name;
+          user.surname = surname;
+        }
+        return user;
+      });
+    }
+
 
   },
 
@@ -146,6 +157,7 @@ export default {
         :name=user.name
         :surname=user.surname
         @removeUser=removeElemUsers
+        @changeUser=changeElemUsers
 
         :key=user.id
     />
