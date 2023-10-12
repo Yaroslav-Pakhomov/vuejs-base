@@ -8,11 +8,13 @@ import Form from "@/components/Form.vue";
 import TestComponent from "@/components/TestComponent.vue";
 import ArrComponent from "@/components/ArrComponent.vue";
 import WorkComponent from "@/components/WorkComponent.vue";
+import UserComponent from "@/components/UserComponent.vue";
 
 export default {
   name: 'AppTest',
 
   components: {
+    UserComponent,
     Base,
     Conditions,
     Cycles,
@@ -37,6 +39,25 @@ export default {
       ],
       initialCounter: 0,
       size: " middle ",
+
+      // Реактивное удаление компонентов
+      users: [
+        {
+          id: 1,
+          name: 'Иван',
+          surname: 'Иванов',
+        },
+        {
+          id: 2,
+          name: 'Петр',
+          surname: 'Петров',
+        },
+        {
+          id: 3,
+          name: 'Сидор',
+          surname: 'Сидоров',
+        },
+      ],
     }
   },
 
@@ -65,6 +86,14 @@ export default {
     workersData(name, salary) {
       console.log('Имя: ' + name + ', зарплата - ' + salary);
     },
+
+    // Реактивное удаление компонентов
+    removeElemUsers(id) {
+      this.users = this.users.filter((user) => {
+        return user.id !== id;
+      });
+    },
+
 
   },
 
@@ -108,6 +137,18 @@ export default {
     <WorkComponent :initialCounter='initialCounter' :size="size"
                    @show="func" @action1="log1" @action2="log2"
                    @funcArgParent='funcArg' @workersDataParent='workersData'/>
+
+    <!--Реактивное удаление компонентов-->
+    <UserComponent
+        v-for="user in users"
+
+        :id=user.id
+        :name=user.name
+        :surname=user.surname
+        @removeUser=removeElemUsers
+
+        :key=user.id
+    />
 
   </div>
 </template>
