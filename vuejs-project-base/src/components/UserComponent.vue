@@ -13,6 +13,7 @@ export default {
   // Методы от родительского компонента
   emits: ['removeUser', 'changeUser'],
 
+  // Свойства компонента
   data() {
     return {
       isEdit: false,
@@ -22,6 +23,7 @@ export default {
     }
   },
 
+  // Методы компонента
   methods: {
     edit() {
       this.isEdit = true;

@@ -9,6 +9,7 @@ import TestComponent from "@/components/TestComponent.vue";
 import ArrComponent from "@/components/ArrComponent.vue";
 import WorkComponent from "@/components/WorkComponent.vue";
 import UserComponent from "@/components/UserComponent.vue";
+import AddUserComponent from "@/components/AddUserComponent.vue";
 
 export default {
   name: 'AppTest',
@@ -23,6 +24,7 @@ export default {
     TestComponent,
     ArrComponent,
     WorkComponent,
+    AddUserComponent,
   },
 
   // Переменные
@@ -103,6 +105,15 @@ export default {
         }
         return user;
       });
+    },
+
+    // Реактивное добавления данных компонента
+    addElemUsers(name, surname) {
+      let id = this.users.length + 1;
+
+      this.users.push({
+        id, name, surname
+      });
     }
 
 
@@ -150,6 +161,7 @@ export default {
                    @funcArgParent='funcArg' @workersDataParent='workersData'/>
 
     <!--Реактивное удаление компонентов-->
+    <!--Реактивное редактирование данных компонентов-->
     <UserComponent
         v-for="user in users"
 
@@ -160,6 +172,10 @@ export default {
         @changeUser=changeElemUsers
 
         :key=user.id
+    />
+
+    <AddUserComponent
+        @addUser=addElemUsers
     />
 
   </div>
