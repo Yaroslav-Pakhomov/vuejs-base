@@ -10,6 +10,7 @@ import ArrComponent from "@/components/ArrComponent.vue";
 import WorkComponent from "@/components/WorkComponent.vue";
 import UserComponent from "@/components/UserComponent.vue";
 import AddUserComponent from "@/components/AddUserComponent.vue";
+import CheckListComponent from "@/components/CheckListComponent.vue";
 
 export default {
   name: 'AppTest',
@@ -25,6 +26,7 @@ export default {
     ArrComponent,
     WorkComponent,
     AddUserComponent,
+    CheckListComponent,
   },
 
   // Переменные
@@ -177,6 +179,15 @@ export default {
     <AddUserComponent
         @addUser=addElemUsers
     />
+
+    <CheckListComponent/>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
   </div>
 </template>
