@@ -11,10 +11,12 @@ import WorkComponent from "@/components/WorkComponent.vue";
 import UserComponent from "@/components/UserComponent.vue";
 import AddUserComponent from "@/components/AddUserComponent.vue";
 import CheckListComponent from "@/components/CheckListComponent.vue";
+import NotepadComponent from "@/components/NotepadComponent.vue";
 
 export default {
   name: 'AppTest',
 
+  // Подключаемые компоненты в текущий
   components: {
     UserComponent,
     Base,
@@ -27,6 +29,7 @@ export default {
     WorkComponent,
     AddUserComponent,
     CheckListComponent,
+    NotepadComponent,
   },
 
   // Переменные
@@ -180,7 +183,11 @@ export default {
         @addUser=addElemUsers
     />
 
+    <!--Чек-лист-->
     <CheckListComponent/>
+
+    <!--Блокнот-->
+    <NotepadComponent/>
 
 
     <br>
